@@ -1,0 +1,156 @@
+<nav class="topnav navbar navbar-light">
+    <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
+        <i class="fe fe-menu navbar-toggler-icon"></i>
+    </button>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
+                <i class="fe fe-sun fe-16"></i>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
+                <span class="fe fe-grid fe-16"></span>
+            </a>
+        </li>
+        <li class="nav-item nav-notif">
+            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
+                <span class="fe fe-bell fe-16"></span>
+                <span class="dot dot-md bg-success"></span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link text-muted pr-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar avatar-sm mt-2">
+                    <!-- Profile Picture Changing -->
+                    <img src="https://cdn.discordapp.com/avatars/<%= req.session.userinfo.id%>/<%= req.session.userinfo.avatar%>.jpg?size=1024" alt="..." class="avatar-img rounded-circle">
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <!-- Reset Password -->
+                <a class="dropdown-item" href="/regen">Reset Password</a>
+                <!-- Logout -->
+                <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
+    <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
+        <i class="fe fe-x"><span class="sr-only"></span></i>
+    </a>
+    <nav class="vertnav navbar navbar-light">
+        <!-- nav bar -->
+        <div class="w-100 mb-4 d-flex">
+        </div>
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Dashboard</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                </a>
+                <a href="/home" class="nav-link">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="ml-3 item-text">Dashboard</span>
+                </a>
+            </li>
+
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>News Center</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+             <a class="nav-link" href="/changelog">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">Changelogs</span>
+                    <span class="badge badge-pill badge-primary">New</span>
+                </a>
+            </li>
+
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Instances</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="/servers" class="nav-link">
+                    <i class="fe fe-box fe-16"></i>
+                    <span class="ml-3 item-text">Your Instances</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="/servers/new" class="nav-link">
+                    <i class="fa-solid fa-cubes"></i>
+                    <span class="ml-3 item-text">Create Instance</span>
+                </a>
+            </li>
+            <% if (settings.status.enabled == true) { %>
+            <li class="nav-item dropdown">
+                <a href="/status" class="nav-link">
+                    <i class="fe fe-pie-chart fe-16"></i>
+                    <span class="ml-3 item-text">Service Status</span>
+                </a>
+            </li>
+            <% } %>
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Panel</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+             <li class="nav-item dropdown">
+                <a href="<%= settings.pterodactyl.domain %>" class="nav-link">
+                    <i class="fa-solid fa-link"></i>
+                    <span class="ml-3 item-text">Panel Link</span>
+                </a>
+            </li>
+
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Account</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="/profile" class="nav-link">
+                    <i class="fe fe-user fe-16"></i>
+                    <span class="ml-3 item-text">Account</span>
+                </a> 
+                <a href="/regen" class="nav-link">
+                    <i class="fe fe-shield fe-16"></i>
+                    <span class="ml-3 item-text">Regenerate Password</span>
+                </a>
+            </li>
+        </ul>
+        <p class="text-muted nav-heading mt-4 mb-1">
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Coins & Resources</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item w-100">
+                <a href="/store" class="nav-link">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span class="ml-3 item-text">Purchase Resources</span>
+                </a>
+                 <a href="/earn" class="nav-link">
+                     <i class="fe fe-compass fe-16"></i>
+                     <span class="ml-3 item-text">Earn Coins</span>
+              </a>
+                <a href="/redeem" class="nav-link">
+                    <i class="fa-solid fa-book"></i>
+                    <span class="ml-3 item-text">Redeem Coupon</span>
+                </a>
+            </li>
+        </ul>
+        <% if (pterodactyl.root_admin == true) { %>
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>Admin</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+             <li class="nav-item dropdown">
+                <a href="/admin" class="nav-link">
+                    <i class="fe fe-credit-card fe-16"></i>
+                    <span class="ml-3 item-text">Admin</span>
+                </a>
+            </li>
+            <% } %>
+        <a href="/store" class="btn mb-2 btn-primary btn-lg btn-block">
+           <i class="fas fa-coins fe-12 mx-2"></i><span class="small">Your Credits: <%= coins %></span>
+

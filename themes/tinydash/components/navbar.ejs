@@ -1,0 +1,81 @@
+<div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="defaultModalLabel">Notifications</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group list-group-flush my-n3">
+                    <div class="list-group-item bg-transparent">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="fe fe-box fe-24"></span>
+                            </div>
+                              <div class="col">
+                                <small><strong>Changelog <%= settings.changelog.third.version %></strong></small>
+                                <div class="my-0 text-muted small"><%= settings.changelog.third.log %></div>
+                              </form>
+                            </div>
+                          </div>
+                </div> <!-- / .list-group -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Clear All</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="varyModal" tabindex="-1" role="dialog" aria-labelledby="varyModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="varyModalLabel">Login Credentials</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">Username:</label>
+                    <p class="text-muted mb-0"><%= pterodactyl.username %></p>
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">Email:</label>
+                    <p class="text-muted mb-0"><%= pterodactyl.email %></p>
+                  </div>
+                </form>
+              </div>
+             
+              <div class="modal-footer">
+                <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Close</button>
+                <button onClick="window.location.href='/regen';" type="button" class="btn mb-2 btn-primary">Regenerate Password</button>
+              </div>
+            </div>
+          </div>
+        </div>
+<div class="modal fade modal-shortcut modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="defaultModalLabel">Shortcuts</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body px-5">
+                <div class="row align-items-center">
+                    <div class="col-6 text-center">
+                        <div class="squircle bg-success justify-content-center">
+                            <i class="fe fe-cpu fe-32 align-self-center text-white"></i>
+                        </div>
+                        <p>Panel</p>
+                    </div>
+                    <div class="col-6 text-center">
+                        <div class="squircle bg-primary justify-content-center">
+                            <i class="fe fe-users fe-32 align-self-center text-white"></i>
+                        </div>
+                        <p>Discord</p>

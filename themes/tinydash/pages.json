@@ -1,0 +1,113 @@
+{
+  "index": "index.ejs",
+  "notfound": "404.ejs",
+  "redirect": {
+    "callback": "/home",
+    "failedcallback": "/",
+    "logout": "/",
+    "deleteserver": "/servers",
+    "updateservers": "/home",
+    "createserver": "/servers",
+    "failedcreateserver": "/servers/new",
+    "modifyserver": "/servers",
+    "failedmodifyserver": "/servers/edit",
+    "setplan": "/admin",
+    "failedsetplan": "/admin",
+    "getip": "/admin",
+    "failedgetip": "/admin",
+    "createserverdisabled": "/servers?err=disabled",
+    "modifyserverdisabled": "/servers?err=disabled",
+    "deleteserverdisabled": "/servers?err=disabled",
+    "regenpassword": "/home",
+    "setresources": "/admin",
+    "failedsetresources": "/admin",
+    "renewserver": "/servers",
+    "failedrenewserver": "/servers",
+    "setcoins": "/admin",
+    "failedsetcoins": "/admin",
+    "purchaseram": "/store",
+    "failedpurchaseram": "/store",
+    "purchasedisk": "/store",
+    "failedpurchasedisk": "/store",
+    "purchasecpu": "/store",
+    "failedpurchasecpu": "/store",
+    "purchaseservers": "/store",
+    "failedpurchaseservers": "/store",
+    "arcioerror": "/adblock",
+    "missingorinvalidcouponcode": "/redeem",
+    "successfullyredeemedcoupon": "/redeem",
+    "couponcreationfailed": "/admin",
+    "couponcreationsuccess": "/admin",
+    "couponrevokefailed": "/admin",
+    "couponrevokesuccess": "/admin",
+    "removeaccountfailed": "/admin",
+    "removeaccountsuccess": "/admin",
+    "giftresources": "/gift",
+    "failedgiftresources": "/gift"
+  },
+  "pages": {
+    "home": "home.ejs",
+    "servers": "servers.ejs",
+    "servers/new": "create.ejs",
+    "servers/edit": "edit.ejs",
+    "admin": "admin.ejs",
+    "store": "store.ejs",
+    "afk": "arcio.ejs",
+    "redeem": "redeem.ejs",
+    "profile": "profile.ejs",
+    "status": "status.ejs",
+    "terms-of-service": "terms-of-service.ejs",
+    "privacy-policy": "privacy-policy.ejs",
+    "changelog": "changelog.ejs",
+    "gift": "gift.ejs",
+    "j4r": "j4r.ejs",
+    "earn": "earn.ejs",
+    "adblock": "adblock.ejs"
+  },
+  "mustbeloggedin": [
+    "/home",
+    "/servers",
+    "/servers/new",
+    "/servers/edit",
+    "/store", 
+    "/afk",
+    "/redeem",
+    "/profile",
+    "/status",
+    "/changelog",
+    "/gift",
+    "/j4r",
+    "/earn"
+  ],
+  "mustbeadmin": [
+    "/admin"
+],
+"variables": {
+    "footerad": true,
+    "faviconlink": "https://i.imgur.com/Xnpq05I.jpg",
+    "home": {
+      "title": "Faliactyl",
+      "name": "Faliactyl",
+      "buttontext": {
+          "loggedin": {
+              "text": "Back to Dashboard",
+              "link": "/dashboard"
+          },
+          "loggedout": {
+              "text": "Login using Discord",
+              "link": "/login"   
+          },
+    "termsofservice": {
+      "title": "Website Terms and Conditions of Use",
+      "text": "Paste your Terms of Service here."
+    },
+    "privacypolicy": {
+      "title": "Website Privacy Policy",
+      "text": "Paste your Privacy Policy here."
+    }
+  }    
+          }
+        }
+      }
+    
+        

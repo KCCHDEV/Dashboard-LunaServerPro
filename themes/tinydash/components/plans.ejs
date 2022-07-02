@@ -1,0 +1,40 @@
+<% if (settings.plans.enabled == true) { %>
+  <div class="card-deck my-4">
+      <div class="card mb-4 shadow">
+          <div class="card-body text-center my-4">
+              <a href="#">
+                  <h3 class="h5 mt-4 mb-0"><%= settings.plans.free.title %></h3>
+              </a>
+              <p class="text-muted"><%= settings.plans.free.text %></p>
+              <span class="h1 mb-0"><%= settings.plans.free.price %></span>
+              <p class="text-muted"><%= settings.plans.free.renew %></p>
+              <ul class="list-unstyled">
+                  <li>
+                      All features included
+                  </li>
+                  <li><%= settings.plans.free.resources.ram %></li>
+                  <li><%= settings.plans.free.resources.disk %></li>
+                  <li><%= settings.plans.free.resources.cpu %></li>
+              </ul>
+              <span class="dot dot-lg bg-success"></span>
+              <span class="text-muted ml-3">Active</span>
+          </div> <!-- .card-body -->
+      </div> <!-- .card -->
+      <div class="card mb-4">
+          <div class="card-body text-center my-4">
+              <a href="#">
+                  <h3 class="h5 mt-4 mb-0"><%= settings.plans.premium.title %></h3>
+              </a>
+              <p class="text-muted"><%= settings.plans.premium.text %></p>
+              <span class="h1 mb-0"><%= settings.plans.premium.price %></span>
+              <p class="text-muted"><%= settings.plans.premium.renew %></p>
+              <ul class="list-unstyled">
+                  <li>
+                      All features included
+                  </li>
+                  <li><%= settings.plans.premium.resources.ram %></li>
+                  <li><%= settings.plans.premium.resources.disk %></li>
+                  <li><%= settings.plans.premium.resources.ram %></li>
+              </ul>
+              <button type="button" class="btn mb-2 btn-primary btn-lg">Upgrade</button>
+<% } %>
