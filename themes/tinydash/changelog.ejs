@@ -55,18 +55,18 @@
                     }
                     %>
                     <div class="col-12">
-                        <h2 class="h3 mb-4 page-title">Changelogs</h2>
+                        <h2 class="h3 mb-4 page-title">บันทึกการเปลี่ยนแปลง</h2>
                         <% if (req.session.newaccount || req.session.password) { %>
                         <% if (req.session.newaccount) { %>
                         <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Your account has been successfully created.</h4>
-                        <p>Please join our Discord if you want assistance or have any queries.</p>
+                        <h4 class="alert-heading">สร้างบัญชีของคุณสำเร็จแล้ว</h4>
+                        <p>โปรดเข้าร่วม Discord ของเราหากคุณต้องการความช่วยเหลือหรือมีข้อสงสัยใดๆ</p>
                         </div>
                         <% } %>
                         <% if (req.session.password) { %>
                         <p class="text-muted">
                             Your <% if (!req.session.newaccount) { %>new <% } %>password is
-                            <code><%= req.session.password %></code>. Make a note of this password and store it somewhere secure.
+                            <code><%= req.session.password %></code>. จดรหัสผ่านนี้และเก็บไว้ในที่ปลอดภัย
                         </p>
                         <% } %>
                         <% } %>
@@ -82,7 +82,7 @@
                                           </div> <!-- .col -->
                                           <div class="col">
                                               <a href="#">
-                                                <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.first.version %></h3>
+                                                <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.first.version %></h3>
                                             </a>
                                             <p class="text-muted"><%= settings.changelog.first.log %></p>
                                         </div> <!-- .col -->
@@ -101,7 +101,7 @@
                                           </div> <!-- .col -->
                                           <div class="col">
                                               <a href="#">
-                                                <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.second.version %></h3>
+                                                <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.second.version %></h3>
                                             </a>
                                             <p class="text-muted"><%= settings.changelog.second.log %></p>
                                         </div> <!-- .col -->
@@ -121,7 +121,7 @@
                                           </div> <!-- .col -->
                                           <div class="col">
                                               <a href="#">
-                                                <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.third.version %></h3>
+                                                <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.third.version %></h3>
                                               </a>
                                               <p class="text-muted"><%= settings.changelog.third.log %></p>
                                             </div> <!-- .col -->
@@ -143,7 +143,7 @@
                                             </div> <!-- .col -->
                                             <div class="col">
                                                 <a href="#">
-                                                  <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.first2.version %></h3>
+                                                  <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.first2.version %></h3>
                                               </a>
                                               <p class="text-muted"><%= settings.changelog.first2.log %></p>
                                           </div> <!-- .col -->
@@ -162,7 +162,7 @@
                                             </div> <!-- .col -->
                                             <div class="col">
                                                 <a href="#">
-                                                  <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.second2.version %></h3>
+                                                  <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.second2.version %></h3>
                                               </a>
                                               <p class="text-muted"><%= settings.changelog.second2.log %></p>
                                           </div> <!-- .col -->
@@ -182,7 +182,7 @@
                                             </div> <!-- .col -->
                                             <div class="col">
                                                 <a href="#">
-                                                  <h3 class="h5 mt-4 mb-1">Changelog <%= settings.changelog.third2.version %></h3>
+                                                  <h3 class="h5 mt-4 mb-1">บันทึกการเปลี่ยนแปลง <%= settings.changelog.third2.version %></h3>
                                                 </a>
                                                 <p class="text-muted"><%= settings.changelog.third2.log %></p>
                                               </div> <!-- .col -->
@@ -216,12 +216,12 @@
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="defaultModalLabel">Are you sure?</h5>
+                                              <h5 class="modal-title" id="defaultModalLabel">คุณแน่ใจไหม?</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
-                                            <div class="modal-body"> WARNING: If you press "Yes, reset it", your panel password will be reset, and you will need to log in again. Only reset your password if it is truly necessary.</div>
+                                            <div class="modal-body"> คำเตือน: หากคุณกด "ใช่ รีเซ็ตมัน" รหัสผ่านแผงของคุณจะถูกรีเซ็ต และคุณจะต้องเข้าสู่ระบบอีกครั้ง รีเซ็ตรหัสผ่านของคุณเมื่อจำเป็นจริงๆ เท่านั้น</div>
                                             <div class="modal-footer">
                                               <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancel</button>
                                               <button onClick="window.location.href='/regen';" type="button" class="btn mb-2 btn-primary">Yes, reset it</button>
