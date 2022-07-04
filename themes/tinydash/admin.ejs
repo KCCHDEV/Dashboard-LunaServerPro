@@ -46,35 +46,35 @@
                 <div class="alert">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                   <% if (req.query.err == "MISSINGID") { %>
-                      You have not provided the Discord user ID.
+                    คุณยังไม่ได้ระบุ ID ผู้ใช้ Discord
 				    <% } else if (req.query.err == "CREATECOUPONINVALIDCHARACTERS") { %>
-					One of the characters you entered in coupon creation was invalid or left, please try again.
+                    อักขระตัวใดตัวหนึ่งที่คุณป้อนในการสร้างคูปองไม่ถูกต้องหรือถูกทิ้งไว้ โปรดลองอีกครั้ง
 				    <% } else if (req.query.err == "REVOKECOUPONCANNOTFINDCODE") { %>
-					One of the characters you entered in coupon revoke was invalid, please try again.
+                     อักขระตัวหนึ่งที่คุณป้อนในการเพิกถอนคูปองไม่ถูกต้อง โปรดลองอีกครั้ง
 				    <% } else if (req.query.err == "CREATECOUPONEMPTY") { %>
-					While creating your coupon you did not specify to give any resources or coins.
+                    ขณะสร้างคูปอง คุณไม่ได้ระบุให้ทรัพยากรหรือเหรียญใดๆ
 				    <% } else if (req.query.err == "CREATECOUPONLESSTHANONE") { %>
-					While creating your coupon you tried to give less then one in RAM, DISK, CPU and/or coins.
+                    ในขณะที่สร้างคูปองของคุณ คุณพยายามให้น้อยกว่าหนึ่งใน RAM, DISK, CPU และ/หรือเหรียญ
                   <% } else if (req.query.err == "INVALIDID") { %>
-                      You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+                    คุณได้ระบุ ID ผู้ใช้ Discord ที่ไม่มีอยู่หรือไม่ได้ลงทะเบียนบนแดชบอร์ด
                   <% } else if (req.query.err == "MISSINGVARIABLES") { %>
-                      You have not provided either ram, disk, cpu, and/or servers.
+                    คุณไม่ได้ระบุ RAM, ดิสก์, ซีพียู และ/หรือเซิร์ฟเวอร์.
                   <% } else if (req.query.err == "RAMSIZE" || req.query.err == "DISKSIZE" || req.query.err == "CPUSIZE" || req.query.err == "SERVERSIZE") { %>
-                      The RAM, disk, CPU and servers number cannot be less than 0 and must be above 999999999999999.
+                    หมายเลข RAM, ดิสก์, CPU และเซิร์ฟเวอร์ต้องไม่น้อยกว่า 0 และต้องมากกว่า 999999999999999.
                   <% } else { %>
-                      Stop admin abusing.
+                    หยุดแอดมินไม่เหมาะสม.
                   <% } %>
                 </div>
               <% } else if (req.query.err == "none") { %>
                 <div class="alert" style="background-color: #00d415;">
                   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                  Success!
+                  ความสำเร็จ!
                 </div>
               <% } %>
             <% } %>
 				    <% if (req.query.code) { %>
 					<div class="alert" style="background-color: #00d415;">
-					You have created a coupon code with the name of: <%= req.query.code %>
+                        คุณได้สร้างรหัสคูปองด้วยชื่อ: <%= req.query.code %>
 					</div>
 				    <% } %>
             <div class="page-header">
@@ -84,7 +84,7 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                   <div class="card">
                     <div class="card-body">
-                    <h4 class="card-title">Change user's package</h4>
+                    <h4 class="card-title">เปลี่ยนแพ็คเกจของผู้ใช้</h4>
                     <form class="forms-sample">
                       <div class="form-group">
                         <label for="IDPlan">Discord User ID:</label>
@@ -98,7 +98,7 @@
                           <% } %>
                         </select>
                       </div>
-                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitPlan()">Apply Changes</a>
+                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitPlan()">ใช้การเปลี่ยนแปลง</a>
                     </form>
                   </div>
                 </div>
@@ -106,10 +106,10 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Set user's resources</h4>
+                    <h4 class="card-title">ตั้งค่าทรัพยากรของผู้ใช้</h4>
                     <form class="forms-sample">
                       <div class="form-group">
-                        <label for="IDSet">Discord User ID:</label>
+                        <label for="IDSet">ID ผู้ใช้ Discord:</label>
                         <input type="number" class="form-control" placeholder="Enter user ID" id="IDSet">
                       </div>
                       <div class="form-group">
@@ -128,7 +128,7 @@
                         <label for="SetServers">Servers:</label><BR>
                         <input type="number" class="form-control" placeholder="0" id="SetServers">
                       </div>
-                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitSet()">Apply Changes</a>
+                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitSet()">ใช้การเปลี่ยนแปลง</a>
                     </form>
                   </div>
                 </div>
@@ -136,10 +136,10 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add user's resources</h4>
+                    <h4 class="card-title">เพิ่มทรัพยากรของผู้ใช้</h4>
                     <form class="forms-sample">
                       <div class="form-group">
-                        <label for="IDAdd">Discord User ID:</label>
+                        <label for="IDAdd">ID ผู้ใช้ Discord:</label>
                         <input type="number" class="form-control" placeholder="Enter user ID" id="IDAdd">
                       </div>
                       <div class="form-group">
@@ -158,7 +158,7 @@
                         <label for="AddServers">Servers:</label><BR>
                         <input type="number" class="form-control" placeholder="0" id="AddServers">
                       </div>
-                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitAdd()">Apply Changes</a>
+                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitAdd()">ใช้การเปลี่ยนแปลง</a>
                     </form>
                   </div>
                 </div>
@@ -166,10 +166,10 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Remove user's resources</h4>
+                    <h4 class="card-title">ลบทรัพยากรของผู้ใช้</h4>
                     <form class="forms-sample">
                       <div class="form-group">
-                        <label for="IDRemove">Discord User ID:</label>
+                        <label for="IDRemove">ID ผู้ใช้ Discord:</label>
                         <input type="number" class="form-control" placeholder="Enter user ID" id="IDRemove">
                       </div>
                       <div class="form-group">
@@ -188,7 +188,7 @@
                         <label for="RemoveServers">Servers:</label><BR>
                         <input type="number" class="form-control" placeholder="0" id="RemoveServers">
                       </div>
-                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitRemove()">Apply Changes</a>
+                      <a role="button" class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" href="javascript: submitRemove()">ใช้การเปลี่ยนแปลง</a>
                     </form>
                   </div>
                 </div>
@@ -196,7 +196,7 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Create coupon</h4>
+                    <h4 class="card-title">สร้างคูปอง</h4>
                                     <form action="/create_coupon">
                                         <label for="code">Code:</label>
                                         <input class="form-control" name="code" placeholder="Put nothing here to generate a random code"><br><br>
@@ -210,7 +210,7 @@
                                         <input class="form-control" name="cpu" type="number"><br><br>
                                         <label for="servers">Servers:</label>
                                         <input class="form-control" name="servers" type="number"><br><br>
-                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Complete</button>
+                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">สมบูรณ์</button>
                                     </form>
                   </div>
                 </div>
@@ -218,11 +218,11 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Delete coupon</h4>
+                    <h4 class="card-title">ลบคูปอง</h4>
                                    <form action="/revoke_coupon">
                                         <label for="code">Code:</label>
                                         <input class="form-control" name="code"><br><br>
-                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Complete</button>
+                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">สมบูรณ์</button>
                                     </form>
                   </div>
                 </div>
@@ -230,13 +230,13 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Set user's coins</h4>
+                    <h4 class="card-title">ตั้งค่าเหรียญของผู้ใช้</h4>
                                     <form action="/setcoins">
                                         <label for="id">Discord ID:</label>
                                         <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
                                         <label for="coins">Coins:</label>
                                         <input class="form-control" name="coins" type="number"><br><br>
-                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Set</button>
+                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">ตั้งค่า</button>
                                     </form>
                   </div>
                 </div>
@@ -244,13 +244,13 @@
               <br/><div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add user's coins</h4>
+                    <h4 class="card-title">เพิ่มเหรียญของผู้ใช้</h4>
                                     <form action="/addcoins">
                                         <label for="id">Discord ID:</label>
                                         <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
                                         <label for="coins">Coins:</label>
                                         <input class="form-control" name="coins" type="number"><br><br>
-                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">Set</button>
+                                        <button class="badge badge-outline-green" style="padding: 12px 30px; font-size: 15px;" type="submit">ตั้งค่า</button>
                                     </form>
                 </div>
               </div>
