@@ -48,28 +48,28 @@
                                                         <h5 class="text-white op-7 mb-4">
                                                         <% if (req.query.err == "MISSINGCOUPONCODE") { %>
                                                                 <div class="alert alert-danger" role="alert">
-                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> You have not provided the coupon code. </div>
+                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> คุณยังไม่ได้ระบุรหัสคูปอง </div>
                                                                 
                                                         <% } else if (req.query.err == "INVALIDCOUPONCODE") { %>
                                                                 <div class="alert alert-danger" role="alert">
-                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> Could not find coupon with the provided code. </div>
+                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> ไม่พบคูปองที่มีรหัสที่ให้มา </div>
                                                                 
                                                         <% } else if (req.query.err == "SUCCESSCOUPONCODE") { %>
                                                                 <div class="alert alert-success" role="alert">
-                                                                <h4 class="alert-heading">Success</h4>
-                                                                <p>You have successfully applied a coupon code.</p>
+                                                                <h4 class="alert-heading">ความสำเร็จ</h4>
+                                                                <p>คุณใช้รหัสคูปองสำเร็จแล้ว</p>
                                                                 </div>
                                                                 
                                                         <% } else { %>
                                                                 <div class="alert alert-danger" role="alert">
-                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> There has been an error while attempting to redeem the code. </div>
+                                                                <span class="fe fe-minus-circle fe-16 mr-2"></span> เกิดข้อผิดพลาดขณะพยายามแลกรหัส </div>
                                                                 
                                                         <% } %>
                                                         </h5>
                       <% } %>
                       <div class="col-12">
                       <div class="col-12">
-                          <h2 class="h3 mb-4 page-title">Earn Page</h2>
+                          <h2 class="h3 mb-4 page-title">ฟาร์มเหรียญ</h2>
                           <div class="row mt-5 align-items-center">
                               <div class="col-md-3 text-center mb-5">
                                   <div class="avatar avatar-xl">
@@ -84,10 +84,10 @@
                                   </div>
                                   <div class="row mb-4">
                                       <div class="col-md-7">
-                                          <p class="text-muted"> You may view all the ways to earn coins on this page.</p>
+                                          <p class="text-muted"> คุณสามารถดูทุกวิธีในการรับเหรียญในหน้านี้</p>
                                       </div>
                                       <div class="col">
-                                          <p class="small mb-0 text-muted">Available Credits: <b>
+                                          <p class="small mb-0 text-muted">เครดิตที่มีอยู่: <b>
 											  <%= coins %>
 										  </b>
 									  </p>
@@ -111,14 +111,14 @@
                                               </div> <!-- .col -->
                                               <div class="col">
                                                   <a href="#">
-                                                      <h3 class="h5 mt-4 mb-1">Afk For Coins</h3>
+                                                      <h3 class="h5 mt-4 mb-1">Afk สำหรับเหรียญ</h3>
                                                   </a>
-                                                  <p class="text-muted">Here's where you can afk for coins. Every <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %> you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> credit<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %>.</p>
+                                                  <p class="text-muted">ที่นี่คุณสามารถ afk สำหรับเหรียญได้ ทั้งหมด <% if (settings.api.arcio["afk page"].every !== 1) { %><%= settings.api.arcio["afk page"].every %> seconds<% } else { %>second<% } %> you will get <%= settings.api.arcio["afk page"].coins == 1 ? "a" : settings.api.arcio["afk page"].coins %> credit<%= settings.api.arcio["afk page"].coins == 1 ? "" : "s" %>.</p>
                                               </div> <!-- .col -->
                                           </div> <!-- .row -->
                                       </div> <!-- .card-body -->
                                       <div class="card-footer">
-                                          <a href="/afk" class="d-flex justify-content-between text-muted"><span>Afk For Coins</span><i class="fe fe-chevron-right"></i></a>
+                                          <a href="/afk" class="d-flex justify-content-between text-muted"><span>Afk สำหรับเหรียญ</span><i class="fe fe-chevron-right"></i></a>
                                       </div> <!-- .card-footer -->
                                       
                                       
@@ -136,16 +136,16 @@
                                               </div> <!-- .col -->
                                               <div class="col">
                                                   <a href="#">
-                                                      <h3 class="h5 mt-4 mb-1">Join for Rewards</h3>
+                                                      <h3 class="h5 mt-4 mb-1">เข้าร่วมเพื่อรับรางวัล</h3>
                                                   </a>
                                                   <p class="text-muted">
-                                                      Here's where you can join servers for rewards. Every server you join you will gain <%= settings.api.client.j4r.every.cpu%>% CPUs, <%= settings.api.client.j4r.every.ram%> RAM, <%= settings.api.client.j4r.every.disk%> Disk, <%= settings.api.client.j4r.every.servers%> Servers.
+                                                    ที่นี่คุณสามารถเข้าร่วมเซิร์ฟเวอร์เพื่อรับรางวัลได้ ทุกเซิร์ฟเวอร์ที่คุณเข้าร่วม คุณจะได้รับ <%= settings.api.client.j4r.every.cpu%>% CPUs, <%= settings.api.client.j4r.every.ram%> RAM, <%= settings.api.client.j4r.every.disk%> Disk, <%= settings.api.client.j4r.every.servers%> Servers.
                                                   </p>
                                               </div> <!-- .col -->
                                           </div> <!-- .row -->
                                       </div> <!-- .card-body -->
                                       <div class="card-footer">
-                                          <a href="/j4r" class="d-flex justify-content-between text-muted"><span>Join for Rewards</span><i class="fe fe-chevron-right"></i></a>
+                                          <a href="/j4r" class="d-flex justify-content-between text-muted"><span>เข้าร่วมเพื่อรับรางวัล</span><i class="fe fe-chevron-right"></i></a>
                                       </div> <!-- .card-footer -->
                                       
                                   </div> <!-- .card -->
@@ -173,15 +173,15 @@
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="defaultModalLabel">Are you sure?</h5>
+                                              <h5 class="modal-title" id="defaultModalLabel">คุณแน่ใจไหม?</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
-                                            <div class="modal-body"> WARNING: If you press "Yes, reset it", your panel password will be reset, and you will need to log in again. Only reset your password if it is truly necessary.</div>
+                                            <div class="modal-body"> คำเตือน: หากคุณกด "ใช่ รีเซ็ตมัน" รหัสผ่านแผงของคุณจะถูกรีเซ็ต และคุณจะต้องเข้าสู่ระบบอีกครั้ง รีเซ็ตรหัสผ่านของคุณเมื่อจำเป็นจริงๆ เท่านั้น</div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">Cancel</button>
-                                              <button onClick="window.location.href='/regen';" type="button" class="btn mb-2 btn-primary">Yes, reset it</button>
+                                              <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                              <button onClick="window.location.href='/regen';" type="button" class="btn mb-2 btn-primary">ใช่ รีเซ็ตมัน</button>
                                             </div>
                                           </div>
                                         </div>
