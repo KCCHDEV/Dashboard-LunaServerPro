@@ -48,30 +48,30 @@
                     <div class="card-body">
                             <% if (req.query.err == "MISSING_INFORMATION") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> Please fill out all of the server information. If you did, recheck them. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> กรุณากรอกข้อมูลเซิร์ฟเวอร์ทั้งหมด หากคุณตรวจสอบอีกครั้ง </div>
                             <% } else if (req.query.err == "NOT_A_NUMBER") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> RAM, Disk and CPUs must be a number. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> RAM, ดิสก์ และ CPU ต้องเป็นตัวเลข. </div>
                             <% } else if (req.query.err == "ERROR_ON_CREATION") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> There has been an error while attempting to create your server. Our slots is full, please check back later once we refilled slots. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> เกิดข้อผิดพลาดขณะพยายามสร้างเซิร์ฟเวอร์ของคุณ ช่องของเราเต็มแล้ว โปรดกลับมาตรวจสอบภายหลังเมื่อเราเติมช่อง. </div>
                             <% } else if (req.query.err == "SERVER_NAME_IS_TOO_LONG") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> Your server name must be less than <b>191</b> characters. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> ชื่อเซิร์ฟเวอร์ของคุณต้องน้อยกว่า <b>191</b>ตัวอักษร</div>
                             <% } else if (req.query.err == "SERVER_NAME_IS_TOO_SHORT") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> Your server name must be more than <b>1</b> character. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> ชื่อเซิร์ฟเวอร์ของคุณต้องมากกว่า <b>1</b>ตัวอักษร</div>
                             <% } else if (req.query.err == "TOO_MUCH_SERVERS") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> The server could not be created because you have requested to create a server that exceeds your plan. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> ไม่สามารถสร้างเซิร์ฟเวอร์ได้ เนื่องจากคุณได้ร้องขอให้สร้างเซิร์ฟเวอร์ที่เกินแผนของคุณ</div>
                             <% } else if (req.query.err == "PREMIUM_LOCATION") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> You cannot make a server on the selected location on your current package. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> คุณไม่สามารถสร้างเซิร์ฟเวอร์ในตำแหน่งที่เลือกในแพ็คเกจปัจจุบันของคุณ </div>
                             <% } else { %>
                             <% if (req.query.num) { %>
                             <% if (!isNaN(parseFloat(req.query.num))) { %>
                             <% if (req.query.err == "TOO_LITTLE_RAM" || req.query.err == "TOO_LITTLE_DISK" || req.query.err == "TOO_LITTLE_CPU") { %>
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> You must make a server with at least <b><%= req.query.num %></b>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> คุณต้องสร้างเซิร์ฟเวอร์อย่างน้อย <b><%= req.query.num %></b>
                             <% if (req.query.err.slice(-3) == "RAM") { %>
                             MB RAM
                             <% } else if (req.query.err.slice(-4) == "DISK") { %>
@@ -79,10 +79,10 @@
                             <% } else { // CPU %>
                             % CPU
                             <% } %>
-                            if you want to create a server with the server type you have selected. </div>
+                            หากคุณต้องการสร้างเซิร์ฟเวอร์ด้วยประเภทเซิร์ฟเวอร์ที่คุณเลือก. </div>
                             <% } else if (req.query.err == "TOO_MUCH_RAM" || req.query.err == "TOO_MUCH_DISK" || req.query.err == "TOO_MUCH_CPU") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> With the selected server type, you can have a maximum of <b><%= req.query.num %></b>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span> ด้วยประเภทเซิร์ฟเวอร์ที่เลือก คุณสามารถมีสูงสุด of <b><%= req.query.num %></b>
                             <% if (req.query.err.slice(-3) == "RAM") { %>
                             MB RAM
                             <% } else if (req.query.err.slice(-4) == "DISK") { %>
@@ -93,18 +93,18 @@
                             on the server. </div>
                             <% } else if (req.query.err == "RESOURCES_EXCEED_PLAN") { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> The server could not be created because you have requested to create a server that exceeds your plan. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span>ไม่สามารถสร้างเซิร์ฟเวอร์ได้ เนื่องจากคุณได้ร้องขอให้สร้างเซิร์ฟเวอร์ที่เกินแผนของคุณ</div>
                             <% } else { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> An error occurred when attempting to launch the instance. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span>เกิดข้อผิดพลาดขณะพยายามเปิดอินสแตนซ์</div>
                             <% } %>
                             <% } else { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> An error occurred when attempting to launch the instance. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span>เกิดข้อผิดพลาดขณะพยายามเปิดอินสแตนซ์</div>
                             <% } %>
                             <% } else { %>
                             <div class="alert alert-danger" role="alert">
-                            <span class="fe fe-minus-circle fe-16 mr-2"></span> An error occurred when attempting to launch the instance. </div>
+                            <span class="fe fe-minus-circle fe-16 mr-2"></span>เกิดข้อผิดพลาดขณะพยายามเปิดอินสแตนซ์</div>
                             <% } %>
                             <% } %>
                      </div>
@@ -114,19 +114,19 @@
                           <% if (req.session.newaccount || req.session.password) { %>
                           <% if (req.session.newaccount) { %>
                           <div class="alert alert-success" role="alert">
-                          <h4 class="alert-heading">Your account has been successfully created.</h4>
-                          <p>Please join our Discord if you want assistance or have any queries.</p>
+                          <h4 class="alert-heading">สร้างบัญชีของคุณสำเร็จแล้ว</h4>
+                          <p>โปรดเข้าร่วม Discord ของเราหากคุณต้องการความช่วยเหลือหรือมีข้อสงสัยใดๆ</p>
                           </div>
                           <% } %>
                           <% if (req.session.password) { %>
                           <p class="text-muted">
                               Your <% if (!req.session.newaccount) { %>new <% } %>password is
-                              <code><%= req.session.password %></code>. Make a note of this password and store it somewhere secure.
+                              <code><%= req.session.password %></code>.จดรหัสผ่านนี้และเก็บไว้ในที่ปลอดภัย
                           </p>
                           <% } %>
                           <% } %>
-                          <h2 class="page-title">Instance Creation</h2>
-                          <p class="text-muted">In order to launch your instance, please enter the needed information.</p>
+                          <h2 class="page-title">การสร้างอินสแตนซ์</h2>
+                          <p class="text-muted">เพื่อเปิดใช้อินสแตนซ์ของคุณ โปรดป้อนข้อมูลที่จำเป็น</p>
                         </div>
                     </div> 
                                      <%- include('./components/ads') %>
@@ -138,7 +138,7 @@
                               <div class="col-md-12">
                                   <div class="card shadow mb-4">
                                       <div class="card-header">
-                                        <strong class="card-title">Required Details</strong>
+                                        <strong class="card-title">รายละเอียดที่จำเป็น</strong>
                                       </div>
                                       <div align="center">
                                       <div class="card-body">
@@ -148,49 +148,49 @@
                                               <div class="form-row">
                                                   <div class="col-md-6 mb-3">
                                                       <label for="validationCustom02">Server Name</label>
-                                                      <input type="text" class="form-control" id="name" placeholder="Enter your server name" required>
-                                                      <div class="valid-feedback"> Looks good! </div>
+                                                      <input type="text" class="form-control" id="name" placeholder="ใส่ชื่อเซิร์ฟเวอร์ของคุณ" required>
+                                                      <div class="valid-feedback"> ดูดี!! </div>
                                                   </div>
                                                   <div class="col-md-6 mb-3">
                                                       <label for="validationCustom01">RAM</label>
-                                                      <input type="number" class="form-control" id="ram" placeholder="Enter your server RAM" required>
-                                                      <div class="valid-feedback"> Looks good! </div>
+                                                      <input type="number" class="form-control" id="ram" placeholder="ป้อน RAM เซิร์ฟเวอร์ของคุณ" required>
+                                                      <div class="valid-feedback"> ดูดี! </div>
                                                   </div>
                                                   <div class="col-md-6 mb-3">
                                                       <label for="validationCustom02">Disk</label>
-                                                      <input type="number" class="form-control" id="disk" placeholder="Enter your server disk" required>
-                                                      <div class="valid-feedback"> Looks good! </div>
+                                                      <input type="number" class="form-control" id="disk" placeholder="ใส่ดิสก์เซิร์ฟเวอร์ของคุณ" required>
+                                                      <div class="valid-feedback"> ดูดี! </div>
                                                   </div>
                                                   <div class="col-md-6 mb-3">
                                                       <label for="validationCustom02">CPUs</label>
-                                                      <input type="number" class="form-control" id="cpu" placeholder="Enter your server CPUs" required>
-                                                      <div class="valid-feedback"> Looks good! </div>
+                                                      <input type="number" class="form-control" id="cpu" placeholder="ป้อนซีพียูเซิร์ฟเวอร์ของคุณ" required>
+                                                      <div class="valid-feedback"> ดูดี! </div>
                                                   </div>
                                               </div>
 
                                               <div class="form-group mb-4">
-                                                  <label for="example-multiselect">Select your preferred node</label>
+                                                  <label for="example-multiselect">เลือกโหนดที่คุณต้องการ</label>
                                                   <select id="location" multiple="" class="form-control" required>
                                                       <% for (let [name, value] of Object.entries(settings.api.client.locations)) { %>
                                                       <option value="<%= name %>"><%= value.name %></option>
                                                       <% } %>
                                                   </select>
-                                                  <label for="example-multiselect">Select your preferred application</label>
+                                                  <label for="example-multiselect">เลือกใบสมัครที่ต้องการ</label>
                                                   <select id="egg" multiple="" class="form-control" required>
                                                       <% for (let [name, value] of Object.entries(settings.api.client.eggs)) { %>
                                                       <option value="<%= name %>"><%= value.display %></option>
                                                       <% } %>
                                                   </select>
-                                                  <div class="invalid-feedback">Please select one option</div>
+                                                  <div class="invalid-feedback">กรุณาเลือกหนึ่งตัวเลือก</div>
                                                   <pre></pre>
                                                  
-                                                          <p>By pressing "Submit", you agreed to our <a href="../terms-of-service">Terms and Conditions</a> and <a href="../privacy-policy">Privacy Policy</a> </p>
+                                                          <p>การกด "ส่ง" แสดงว่าคุณยอมรับ <a href="../terms-of-service">ข้อกำหนดและเงื่อนไข</a> and <a href="../privacy-policy">นโยบายความเป็นส่วนตัว</a> </p>
                                                           
                                               
                                                     <a onclick="return submitForm();">
-                                                    <button type="button" class="btn mb-2 btn-outline-primary"><span class="fe fe-arrow-right fe-16 mr-2"></span>Submit</button>
+                                                    <button type="button" class="btn mb-2 btn-outline-primary"><span class="fe fe-arrow-right fe-16 mr-2"></span>ส่ง</button>
                                                     </a>
-                                                    <button id="redirectDashboard" type="button" class="btn mb-2 btn-outline-primary">Cancel</button>
+                                                    <button id="redirectDashboard" type="button" class="btn mb-2 btn-outline-primary">ยกเลิก</button>
                                               </div>
                                           </form>
                                           <script type="text/javascript">
